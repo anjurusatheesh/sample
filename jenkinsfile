@@ -5,7 +5,8 @@ pipeline {
         stage('Git Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/anjurusatheesh/sample.git'
-            
+                git clone https://github.com/anjurusatheesh/sample.git
+
             }
         }
         
