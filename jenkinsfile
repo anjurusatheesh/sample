@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Git Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anjurusatheesh/sample.git'
+            
+            }
+        }
+        
+        stage('Image Build') {
+            steps {
+                sh 'docker build -t node .'
+            }
+        }
+        
+        stage('Image Run') {
+            steps {
+                sh 'docker run -d -p 3001:3000 node'
+            }
+        }
+    }
+}
+
+
