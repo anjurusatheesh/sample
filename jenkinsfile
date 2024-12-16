@@ -5,6 +5,7 @@ pipeline {
         stage('Git Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/anjurusatheesh/sample.git'
+                withCredentials([usernamePassword(credentialsId: 'anjuru', passwordVariable: '7702826188satheesh', usernameVariable: 'github')]) {
             }
         }
         
