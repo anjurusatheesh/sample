@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/anjurusatheesh/sample.git'
-                withCredentials([usernamePassword(credentialsId: 'anjuru', passwordVariable: '7702826188satheesh', usernameVariable: 'github')]) {
+                // Using withCredentials to securely pass the GitHub credentials
+                withCredentials([usernamePassword(credentialsId: 'anjuru', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                    // Pass credentials to the git command
+                    sh 'git clone https://$user:$pass@github.com/anjurusatheesh/sample.git'
+                }
             }
         }
         
